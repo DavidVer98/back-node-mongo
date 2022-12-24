@@ -74,8 +74,8 @@ router.delete("/task/:id", (req, res) => __awaiter(void 0, void 0, void 0, funct
 router.put("/task/:id", (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     try {
         const date = new Date();
-        const { title, description } = req.body; // obtenemos los datos del body
-        const updateTask = yield task_1.default.findByIdAndUpdate(req.params.id, { 'title': title, 'description': description, 'date': date }, { new: true }); // obtenemos el id de la tarea y la actualizamos con los datos que nos envian
+        const { title, description, done } = req.body; // obtenemos los datos del body
+        const updateTask = yield task_1.default.findByIdAndUpdate(req.params.id, { 'title': title, 'description': description, 'date': date, 'done': done }, { new: true }); // obtenemos el id de la tarea y la actualizamos con los datos que nos envian
         console.log(updateTask, "Update.."); // obtenemos el id de la tarea
         if (!updateTask) {
             return res.status(404).json({ message: 'Task not found' }); // si no se encuentra la tarea enviamos un mensaje de error
