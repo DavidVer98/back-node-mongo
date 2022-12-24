@@ -75,8 +75,8 @@ router.delete("/task/:id", async (req, res) => {
 router.put("/task/:id", async (req, res) => {
     try {
         const date: Date = new Date();
-        const { title, description }= req.body // obtenemos los datos del body
-        const updateTask = await Task.findByIdAndUpdate( req.params.id, { 'title': title, 'description': description, 'date':date } , {new:true } ) // obtenemos el id de la tarea y la actualizamos con los datos que nos envian
+        const { title, description, done }= req.body // obtenemos los datos del body
+        const updateTask = await Task.findByIdAndUpdate( req.params.id, { 'title': title, 'description': description, 'date':date, 'done':done } , {new:true } ) // obtenemos el id de la tarea y la actualizamos con los datos que nos envian
  
         console.log(updateTask, "Update.."); // obtenemos el id de la tarea
 
